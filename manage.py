@@ -8,6 +8,7 @@ app = create_app()
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
+
 @manager.command
 def run():
     app.run()
@@ -17,6 +18,6 @@ def run():
 def make_shell_context():
     return {'db': db, 'User': User}
 
-    
+
 if __name__ == '__main__':
     manager.run()
