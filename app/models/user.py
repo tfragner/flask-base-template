@@ -1,5 +1,6 @@
-from app import db, login
+from app import db, login, ma
 from flask_login import UserMixin
+from flask_marshmallow import Schema
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -22,3 +23,16 @@ class User(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+
+class UserSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'username', 'email', '_links')
+    _links = ma.Hyperlinks({
+        'self': ma.URLFor('api.user_detail', id='<id>'),
+        'collection': ma.URLFor('api.users')
+    })
+
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
