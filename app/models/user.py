@@ -1,6 +1,5 @@
 from app import db, login, ma
 from flask_login import UserMixin
-from flask_marshmallow import Schema
 from werkzeug.security import generate_password_hash, check_password_hash
 
 

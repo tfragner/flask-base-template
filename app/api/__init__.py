@@ -1,5 +1,4 @@
 from flask import Blueprint
-from app import docs
 
 
 bp = Blueprint('api', __name__)

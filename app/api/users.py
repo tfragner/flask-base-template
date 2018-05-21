@@ -1,6 +1,5 @@
 from flask import jsonify
 from app.models.user import User, users_schema, user_schema
-from app.api.errors import bad_request
 from app.api import bp
 
 
